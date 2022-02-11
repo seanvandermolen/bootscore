@@ -251,7 +251,6 @@ function bootscore_scripts() {
   } else {
     $modificated_bootscoreCss = 1;
   }
-  $modificated_fontawesomeCss = date('YmdHi', filemtime(get_template_directory() . '/css/lib/fontawesome.min.css'));
   $modificated_bootstrapJs = date('YmdHi', filemtime(get_template_directory() . '/js/lib/bootstrap.bundle.min.js'));
   $modificated_themeJs = date('YmdHi', filemtime(get_template_directory() . '/js/theme.js'));
 
@@ -262,9 +261,6 @@ function bootscore_scripts() {
   require_once 'inc/scss-compiler.php';
   bootscore_compile_scss();
   wp_enqueue_style('bootstrap', get_template_directory_uri() . '/css/lib/bootstrap.min.css', array(), $modificated_bootscoreCss);
-
-  // Fontawesome
-  wp_enqueue_style('fontawesome', get_template_directory_uri() . '/css/lib/fontawesome.min.css', array(), $modificated_fontawesomeCss);
 
   // Bootstrap JS
   wp_enqueue_script('bootstrap', get_template_directory_uri() . '/js/lib/bootstrap.bundle.min.js', array(), $modificated_bootstrapJs, true);
@@ -290,18 +286,6 @@ function bootscore_scripts() {
 }
 add_action('wp_enqueue_scripts', 'bootscore_scripts');
 //Enqueue scripts and styles END
-
-
-// Add <link rel=preload> to Fontawesome
-add_filter('style_loader_tag', 'wpse_231597_style_loader_tag');
-
-function wpse_231597_style_loader_tag($tag) {
-
-  $tag = preg_replace("/id='font-awesome-css'/", "id='font-awesome-css' online=\"if(media!='all')media='all'\"", $tag);
-
-  return $tag;
-}
-// Add <link rel=preload> to Fontawesome END
 
 
 /**
