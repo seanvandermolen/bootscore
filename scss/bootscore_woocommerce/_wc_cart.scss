@@ -24,3 +24,12 @@ WooCommerce Cart
     width: 100%;
   }
 }
+
+// WooCommerce cart thumbnail scaling
+#add_payment_method table.cart img, .woocommerce-cart table.cart img, .woocommerce-checkout table.cart img {
+  width: 100%;
+  min-width:100px;
+  max-width:300px;
+  max-height: 300px;
+  box-shadow: none;
+}
