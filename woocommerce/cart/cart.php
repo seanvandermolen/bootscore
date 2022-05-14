@@ -23,15 +23,15 @@ do_action('woocommerce_before_cart'); ?>
 <form class="woocommerce-cart-form" action="<?php echo esc_url(wc_get_cart_url()); ?>" method="post">
   <?php do_action('woocommerce_before_cart_table'); ?>
 
-  <table class="shop_table shop_table_responsive cart woocommerce-cart-form__contents rounded" cellspacing="0">
+  <table class="shop_table shop_table_responsive cart woocommerce-cart-form__contents rounded text-nowrap" cellspacing="0">
     <thead>
       <tr>
         <th class="product-remove">&nbsp;</th>
         <th class="product-thumbnail">&nbsp;</th>
-        <th class="product-name"><?php esc_html_e('Product', 'woocommerce'); ?></th>
-        <th class="product-price"><?php esc_html_e('Price', 'woocommerce'); ?></th>
-        <th class="product-quantity"><?php esc_html_e('Quantity', 'woocommerce'); ?></th>
-        <th class="product-subtotal"><?php esc_html_e('Subtotal', 'woocommerce'); ?></th>
+        <th class="product-name text-nowrap"><?php esc_html_e('Product', 'woocommerce'); ?></th>
+        <th class="product-price text-nowrap"><?php esc_html_e('Price', 'woocommerce'); ?></th>
+        <th class="product-quantity text-nowrap"><?php esc_html_e('Quantity', 'woocommerce'); ?></th>
+        <th class="product-subtotal text-nowrap"><?php esc_html_e('Subtotal', 'woocommerce'); ?></th>
       </tr>
     </thead>
     <tbody>
@@ -52,7 +52,7 @@ do_action('woocommerce_before_cart'); ?>
               echo apply_filters( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
                 'woocommerce_cart_item_remove_link',
                 sprintf(
-                  '<a href="%s" class="text-danger" aria-label="%s" data-product_id="%s" data-product_sku="%s"><i class="fa-regular fa-trash-can"></i></a>',
+                  '<a href="%s" class="text-danger" aria-label="%s" data-product_id="%s" data-product_sku="%s"><i class="far fa-trash-alt"></i></a>',
                   esc_url(wc_get_cart_remove_url($cart_item_key)),
                   esc_html__('Remove this item', 'woocommerce'),
                   esc_attr($product_id),
@@ -97,7 +97,7 @@ do_action('woocommerce_before_cart'); ?>
 
             <td class="product-price" data-title="<?php esc_attr_e('Price', 'woocommerce'); ?>">
               <?php
-              echo apply_filters('woocommerce_cart_item_price', WC()->cart->get_product_price($_product), $cart_item, $cart_item_key); // PHPCS: XSS ok.
+              echo apply_filters('woocommerce_cart_item_price ms-lg-2 text-nowrap', WC()->cart->get_product_price($_product), $cart_item, $cart_item_key); // PHPCS: XSS ok.
               ?>
             </td>
 
@@ -125,7 +125,7 @@ do_action('woocommerce_before_cart'); ?>
 
             <td class="product-subtotal" data-title="<?php esc_attr_e('Subtotal', 'woocommerce'); ?>">
               <?php
-              echo apply_filters('woocommerce_cart_item_subtotal', WC()->cart->get_product_subtotal($_product, $cart_item['quantity']), $cart_item, $cart_item_key); // PHPCS: XSS ok.
+              echo apply_filters('woocommerce_cart_item_subtotal text-nowrap', WC()->cart->get_product_subtotal($_product, $cart_item['quantity']), $cart_item, $cart_item_key); // PHPCS: XSS ok.
               ?>
             </td>
           </tr>
